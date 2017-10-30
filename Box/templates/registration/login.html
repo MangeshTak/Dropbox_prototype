@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<style>
+h1{
+width: 520px;
+padding: 10px;
+background-color: lightgray;
+border-style: solid;
+margin : auto;
+text-align: center;}
+
+h2{
+width: 420px;
+padding: 5px;
+background-color: lightblue;
+border-style: solid;
+margin : auto;
+text-align: center;}
+
+form{
+width: 620px;
+padding: 10px;
+border: 5px solid gray;
+margin: auto;
+text-align: center;}
+
+
+</style>
+
+    {% if form.errors %}
+        <p>Your username and password did not match. Please try again</p>
+    {% else %}
+        <p>Please use following form to log in</p>
+    {% endif %}
+
+<center>
+<h3>Welcome To DJANGO <br><br>Login Page<br><br></h3>
+</center>
+
+<div class="login-form">
+<form action="{% url 'login' %}" method="post" >
+
+
+    {{form.as_p}}
+    {% csrf_token %}
+
+    <input type="hidden" name="next" value="{{next}}"/>
+    <p><input type="submit" value="Log-in"></p>
+    <br>
+    <a href="{% url 'welcome' %}">Go to Home Page</a>
+<br>
+</form>
+
+
+</div>
+</body>
+</html>

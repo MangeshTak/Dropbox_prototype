@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dropbox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="panel panel-default">
+  <div class="panel-body">
+    {% load static %}
+  <img src="{% static '/dr.png' %}" class="center-block" width="200" height="30"/>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6" >
+    <br><br>
+	<img src="{% static '/dr1.png' %}" style="margin-left:270px" />
+	</div>
+    <div class="col-lg-6" >
+
+
+      <div style="margin-left:60px; margin-top:20px" >
+      {% block body %}
+
+      {% endblock %}
+        </div>
+    </div>
+
+
+  </div>
+</div>
+
+</body>
+</html>

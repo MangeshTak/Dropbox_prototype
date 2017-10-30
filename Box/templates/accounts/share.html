@@ -1,0 +1,80 @@
+{% extends 'accounts/base1.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="container">
+    {% if request.user.is_authenticated %}
+
+<form action="{% url 'share' %}" method="POST" >
+
+    {% csrf_token %}
+
+    <div class="row">
+    <div class="col-lg-4" >
+
+    <div style="margin-top:40px; margin-right:150px">
+    <h3>Please share a file</h3>
+    <table>
+        <tr><td>User : </td>
+            <td>
+                <select name="dropdown1">
+                    {% for filename in user_data %}
+                        <option value="{{ filename.username }}">{{filename.username}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        <tr><td>File : </td>
+            <td>
+                <select name="dropdown2">
+                    {% for filename in file_data %}
+                        <option value="{{ filename.Filename }}">{{filename.Filename}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+            <br><br>
+
+
+        </tr>
+
+        <td><input type="submit" value="Share"></td>
+
+    </table>
+
+    <br>
+
+    </div>
+    </div>
+    <br>
+
+        <div class="col-lg-8" >
+<div style="margin-left:70px; color:#007ee5">
+    <br>
+    <p>Please follow below steps to share a file:</p>
+    <p>1: Please select a user with whom you want to share your file</p>
+    <p>2: Choose the file from your machine</p>
+    <p>3: Click on 'share' button</p>
+    <p>4: And your file is shared....</p>
+
+</div>
+          <img src="{% static '/dr1.png' %}" style="margin-top:0px; margin-left:50px"  />
+
+      </div>
+  </div>
+
+
+    {%else%}
+
+    <p>You must login first</p>
+    <a href="{% url 'login' %}">Logout</a>
+    {% endif %}
+
+<br><br>
+</form>
+</div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'accounts/base1.html' %}
+{% block body %}
+{% load static %}
+
+<div class="container">
+    {% if request.user.is_authenticated %}
+
+    <div class="row">
+    <div class="col-lg-4" >
+
+    <div style="margin-top:40px; margin-right:150px">
+
+        <h3>Your Profile:</h3>
+        <br>
+    {% for da in data %}
+    <h4>
+        <ul>
+            <li>Username : {{da.username}} </li>
+            <li>Name : {{da.first_name}} <br></li>
+            <li>Email : {{da.email}} <br><br></li>
+        </ul>
+        </h4>
+        <a href="{% url 'profile' %}">Edit information</a>
+
+    {% endfor %}
+
+    <br>
+
+    </div>
+    </div>
+    <br>
+<div class="col-lg-8" >
+<div style="margin-left:70px; color:#007ee5">
+    <br>
+    <p>1: Your username is visible to other users.</p>
+    <p>2: Providing email and name is optional</p>
+
+</div>
+          <img src="{% static '/dr1.png' %}" style="margin-top:0px; margin-left:50px"  />
+
+      </div>
+  </div>
+
+
+
+
+
+    {%else%}
+    <p>You must login first</p>
+    <a href="{% url 'login' %}">Logout</a>
+    {% endif %}
+<br><br>
+
+</div>
+{%endblock %}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dropbox</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid ">
+
+    <div class="panel panel-default">
+  <div class="panel-body">
+    <h4> <a href="{% url 'logout' %}" class="pull-right" >Logout  </a></h4>
+  </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-2" style="border-style:ridge; height:1000px">
+        <br><br>
+        {% load static %}
+    	<img src="{% static '/logo.png' %}" class="pull-left" width="80" height="80"/>
+        <br><br><br><br><br>
+
+        <div style="margin-left:10px">
+        <h4> <a href="{% url 'in' %}">Home  </a></h4>
+        <h4> <a href="{% url 'files' %}">Files  </a></h4>
+        <h4> <a href="{% url 'profile' %}">Profile  </a></h4>
+        </div>
+
+	</div>
+
+    <div class="col-lg-8" style="border-style:ridge; height:1000px" >
+      <br><br>
+      {% block body %}
+      {% endblock %}
+    </div>
+
+    <div class="col-lg-2" style="border-style:ridge; height:1000px">
+        <br><br><br><br><br><br>
+        <h4> <a href="{% url 'upload' %}" class="pull-right">Upload Files  </a></h4> <br>
+        <h4> <a href="{% url 'share' %}" class="pull-right">Share  </a></h4> <br>
+        <h4> <a href="{% url 'delete' %}" class="pull-right">Delete  </a></h4> <br>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

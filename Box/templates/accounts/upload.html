@@ -1,0 +1,50 @@
+{% extends 'accounts/base1.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+{% load static %}
+<div class="container">
+    {% if request.user.is_authenticated %}
+
+<form action="." method="POST" enctype="multipart/form-data" >
+
+
+    {% csrf_token %}
+
+  <div class="row">
+    <div class="col-lg-4" >
+
+    <div style="margin-top:50px; margin-right:150px">
+        <h3>Please upload a file</h3>
+        <br>
+    {{form_new|crispy}}
+    <br>
+    <p><input type="submit" value="Save" ></p>
+    </div>
+    </div>
+    <br>
+<div class="col-lg-8" >
+<div style="margin-left:70px; color:#007ee5">
+    <p>Please follow below steps to upload a file:</p>
+    <p>1: Enter the file name</p>
+    <p>2: Choose the file from your machine</p>
+    <p>4: Click on 'save' button</p>
+    <p>5: And your file is uploaded....</p>
+</div>
+          <img src="{% static '/dr1.png' %}" style="margin-top:0px; margin-left:50px"  />
+
+      </div>
+  </div>
+
+    {%else%}
+    <p>You must login first</p>
+    <a href="{% url 'login' %}">Logout</a>
+
+
+
+    {% endif %}
+<br><br>
+
+</form>
+
+</div>
+{% endblock %}

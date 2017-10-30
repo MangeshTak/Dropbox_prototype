@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+<div class="columns is-mobile">
+<div class="column is-half is-offset-one-quarter">
+    <h3 class="title is-size3">Sign Up Page<br></h3>
+    <br>
+    <form action="." method="post" >
+    {% csrf_token %}
+    <div style="margin-right:250px; margin-bottom:20px">
+    {{user_form|crispy}}
+    <p><input type="submit" value="Register"></p>
+    <br>
+    <a href="{% url 'welcome' %}">Go to Sign in</a>
+    </div>
+<br>
+</form>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'accounts/base1.html' %}
+
+{% block body %}
+{% load static %}
+<div class="container">
+    {% if request.user.is_authenticated %}
+
+<form action="{% url 'delete' %}" method="POST" >
+
+    {% csrf_token %}
+
+
+    <div class="row">
+    <div class="col-lg-4" >
+
+    <div style="margin-top:50px; margin-right:150px">
+        <h3>Please delete file</h3>
+        <br>
+    <table>
+        <tr><td>File : </td>
+            <td>
+                <select name="dropdown1">
+                    {% for filename in file_data %}
+                        <option value="{{ filename.Filename }}">{{filename.Filename}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+
+        </tr>
+
+        <td><br><input type="submit" value="Delete"></td>
+
+    </table>
+
+    <br>
+
+    </div>
+    </div>
+    <br>
+<div class="col-lg-8" >
+<div style="margin-left:70px; color:#007ee5">
+    <p>Plese follow below steps to delete a file</p>
+    <p>1: Select file from dropdown list</p>
+    <p>   (These are the files which you have uploaded)</p>
+    <p>2: Click on 'delete' button</p>
+    <p>3: And your file is deleted....</p>
+</div>
+          <img src="{% static '/dr1.png' %}" style="margin-top:0px; margin-left:50px"  />
+
+      </div>
+  </div>
+
+
+
+    {%else%}
+
+    <p>You must login first</p>
+    <a href="{% url 'login' %}">Logout</a>
+    {% endif %}
+
+<br><br>
+</form>
+</div>
+</body>
+</html>
+
+{% endblock %}

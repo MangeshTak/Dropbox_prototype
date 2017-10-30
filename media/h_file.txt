@@ -1,0 +1,43 @@
+#ifndef ROMANNUMERAL_H_
+#define ROMANNUMERAL_H_
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+class RomanNumeral
+{
+   
+private:
+   string roman;
+   int decimal;
+   void to_roman(int);
+   void to_decimal(string);
+public:
+    /**
+     * Default constructor.
+     */
+    RomanNumeral();
+	
+    /**
+     * constructors to handle oamn and integer input.
+     */
+	
+    RomanNumeral(int decimal);
+    RomanNumeral(string roman);
+
+    /***** Complete this class declaration. *****/
+
+    friend ostream& operator <<(ostream& dout, RomanNumeral& r);
+    friend istream& operator >>(istream& in, RomanNumeral& r);
+    friend bool operator==(RomanNumeral x,RomanNumeral y);
+    friend bool operator!=(RomanNumeral x,RomanNumeral y);
+    friend RomanNumeral operator+(RomanNumeral x,RomanNumeral y);
+    friend RomanNumeral operator-(RomanNumeral x,RomanNumeral y);
+    friend ostream& operator <<(ostream& dout, char& r);
+    friend RomanNumeral operator*(RomanNumeral x,RomanNumeral y);
+    friend RomanNumeral operator/(RomanNumeral x,RomanNumeral y);
+
+};
+
+#endif /* ROMANNUMERAL_H_ */
