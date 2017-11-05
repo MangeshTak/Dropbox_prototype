@@ -4,23 +4,28 @@
   <title>Dropbox</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<div class="container-fluid ">
 
-    <div class="panel panel-default">
-  <div class="panel-body">
+ <div class="panel panel-default" >
+
+  <div class="panel-body" style="position: fixed;overflow: hidden;width: 100%;border-bottom: ridge;z-index: 5;background-color: white;">
     <h4> <a href="{% url 'logout' %}" class="pull-right" >Logout  </a></h4>
   </div>
-  </div>
+
+</div>
+
 
   <div class="row">
-    <div class="col-lg-2" style="border-style:ridge; height:1000px">
+    <div class="col-lg-2" style="height:1000px; margin-top:60px;">
         <br><br>
+        <div style="position:fixed; margin-left:20px;">
         {% load static %}
     	<img src="{% static '/logo.png' %}" class="pull-left" width="80" height="80"/>
         <br><br><br><br><br>
@@ -30,25 +35,27 @@
         <h4> <a href="{% url 'files' %}">Files  </a></h4>
         <h4> <a href="{% url 'profile' %}">Profile  </a></h4>
         </div>
-
+        </div>
 	</div>
 
-    <div class="col-lg-8" style="border-style:ridge; height:1000px" >
+    <div class="col-lg-8" style="height:1000px; margin-top:70px;" >
       <br><br>
       {% block body %}
       {% endblock %}
     </div>
 
-    <div class="col-lg-2" style="border-style:ridge; height:1000px">
+    <div class="col-lg-2" style="height:1000px; margin-top:60px;">
         <br><br><br><br><br><br>
-        <h4> <a href="{% url 'upload' %}" class="pull-right">Upload Files  </a></h4> <br>
-        <h4> <a href="{% url 'share' %}" class="pull-right">Share  </a></h4> <br>
-        <h4> <a href="{% url 'delete' %}" class="pull-right">Delete  </a></h4> <br>
+        <div style="position:fixed; margin-left:40px; font-size:125%; margin-top:25px;">
+         <a href="{% url 'upload' %}" >Upload Files  </a> <br>
+         <a href="{% url 'share' %}" style="margin-bottom:10px;" >Share  </a> <br>
+         <a href="{% url 'delete' %}">Delete  </a> <br>
+            </div>
     </div>
 
   </div>
 
-</div>
+
 
 </body>
 </html>

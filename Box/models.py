@@ -6,14 +6,9 @@ from django.conf import settings
 class user_files(models.Model):
     Filename = models.CharField(max_length=50)
     Browse = models.FileField(upload_to='img/')
-    user_uploaded = models.CharField(max_length=50, blank=True)
+    user_uploaded = models.ForeignKey(User, related_name='file_owner')
+    shared_with = models.ManyToManyField(User,related_name='shared_file')
 
     def get_absolute_url(self):
         return '/img/%s' % self.Browse.name
 
-user_list = (User.objects.all())
-
-class share_files(models.Model):
-    select_file = models.CharField(max_length=300)
-    from_user = models.CharField(max_length=50)
-    select_user = models.CharField(max_length=50,default=None)

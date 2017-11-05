@@ -11,23 +11,23 @@
     {% csrf_token %}
 
     <div class="row">
-    <div class="col-lg-4" >
+    <div class="col-lg-4">
 
     <div style="margin-top:40px; margin-right:150px">
     <h3>Please share a file</h3>
     <table>
         <tr><td>User : </td>
             <td>
-                <select name="dropdown1">
+                <select name="dropdown1" style="border-radius:5px; width:200px">
                     {% for filename in user_data %}
                         <option value="{{ filename.username }}">{{filename.username}}</option>
                     {% endfor %}
                 </select>
             </td>
 
-        <tr><td>File : </td>
+        <tr><td>File   : </td>
             <td>
-                <select name="dropdown2">
+                <select name="dropdown2" style="border-radius:5px; margin-top:8px; width:200px">
                     {% for filename in file_data %}
                         <option value="{{ filename.Filename }}">{{filename.Filename}}</option>
                     {% endfor %}
@@ -39,7 +39,7 @@
 
         </tr>
 
-        <td><input type="submit" value="Share"></td>
+        <td><input type="submit" value="Share" style="border-radius:5px; margin-top:20px"></td>
 
     </table>
 

@@ -3,3 +3,34 @@
 {
     border: 1px solid black;
 }
+
+.App-header {
+    top: 0;
+    right: 0;
+    left: 0;
+
+    position: fixed;
+    padding:20px;
+    height: 50px;
+    z-index: 99;
+    font-size: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #d0d4d9;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(208, 212, 217);
+    -webkit-box-shadow: 0px 1px 1px #d0d4d9;
+    box-shadow: 0px 1px 1px #d0d4d9;
+
+
+}
+
+.pbody{
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    border-bottom: ridge;
+    z-index: 5;
+    background-color: white;
+
+}

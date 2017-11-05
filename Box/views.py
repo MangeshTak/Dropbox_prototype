@@ -51,7 +51,8 @@ def user_upload(request):
             form_new = Fileupload(request.POST, request.FILES )
             if form_new.is_valid():
                 instance = form_new.save(commit=False)
-                instance.user_uploaded=request.user
+                a=User.objects.get(username=request.user)
+                instance.user_uploaded=a
                 instance.save()
                 return redirect('upload')
         else:
@@ -92,7 +93,9 @@ def user_share(request):
 
     if request.method=="POST":
         user_form = Share_file(request.POST)
-        data=share_files(select_user=select_user,select_file=select_file,from_user=request.user)
+        data=user_files.objects.get(user_uploaded=request.user,Filename=select_file)
+        a = User.objects.filter(username=select_user)
+        data.shared_with=a
         data.save()
         return redirect('share')
 
@@ -125,7 +128,7 @@ def user_files_all(request):
         return render(request, 'accounts/logout.html')
     else:
             data = user_files.objects.filter(user_uploaded=request.user)
-            data1 = share_files.objects.filter(select_user=request.user)
+            data1 = user_files.objects.filter(shared_with=request.user)
             #data2 = user_files.objects.filter(Filename=data1.select_file,user_uploaded=data1.from_user)
             args = {'data': data,'data1':data1}
             return render(request, 'accounts/files.html', args)

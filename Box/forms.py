@@ -35,8 +35,8 @@ class Fileupload(forms.ModelForm):
 
 class Share_file(forms.ModelForm):
     class Meta:
-        model = share_files
-        fields = ('select_file', 'select_user')
+        model = user_files
+        fields = ('Filename','shared_with')
 
 class delete_file(forms.ModelForm):
     class Meta:

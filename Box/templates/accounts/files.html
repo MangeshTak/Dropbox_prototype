@@ -37,14 +37,11 @@
     </thead>
 
 	{% for da in data1 %}
-      {{data = user_files.objects.filter(user_uploaded=da.from_user)
-        data2 = data.objects.filter(Filename=da.select_file)
 
-      }}
 	<tbody>
       <tr>
-        <td width="200" >{{da.select_file}}</td>
-        <td width="200" ><a href="{{da.select_file.url}}">Download</a></td>
+        <td width="200" >{{da.Filename}}</td>
+        <td width="200" ><a href="{{da.Browse.url}}">Download</a></td>
       </tr>
     </tbody>
 	{% endfor %}
