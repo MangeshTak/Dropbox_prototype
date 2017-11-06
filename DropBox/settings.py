@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+#import djcelery
+#djcelery.setup_loader()
+
+#CELERY_RESULT_BACKEND = "amqp"
+#CELERY_IMPORTS = ("app.module.tasks", )
+
+CELERY_BROKER_URL = 'amqp://localhost'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -41,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'Box',
+    'djcelery',
 ]
 
 MIDDLEWARE = [

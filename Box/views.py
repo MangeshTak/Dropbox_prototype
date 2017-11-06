@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from Box.models import *
 from django.views.generic import TemplateView,ListView
 from django.contrib.auth.decorators import login_required
+from Box.task import *
 from DropBox import settings
 
 def user_login(request):
@@ -98,24 +99,19 @@ def user_share(request):
         data.shared_with=a
         data.save()
         return redirect('share')
-
-        if user_form.is_valid():
-            new_user=user_form.save(commit=False)
-            new_user.save()
-            return redirect('share')
-            #return render(request, 'accounts/reg_done.html', {'new_user': new_user})
     else:
         user_form=Share_file()
         return render(request, 'accounts/share.html',{'user_form':user_form, 'user_data':user_data, 'file_data':file_data})
 
 def user_delete(request):
     file_data = user_files.objects.filter(user_uploaded=request.user)
-    select_user=request.POST.get('dropdown1')
+    select_file=request.POST.get('dropdown1')
 
     if request.method=="POST":
         user_form = Share_file(request.POST)
-        data=user_files.objects.filter(Filename=select_user)
-        data.delete()
+        del_file.delay(select_file)
+        #data=user_files.objects.filter(Filename=select_file)
+        #data.delete()
         return redirect('delete')
 
     else:
